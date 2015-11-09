@@ -1,5 +1,5 @@
 
-$import('$serviceworker-cache-polyfill.js');
+$import('serviceworker-cache-polyfill.js');
 
 
 this.addEventListener('install', function(event) {
