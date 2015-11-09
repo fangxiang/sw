@@ -1,6 +1,7 @@
 // Via https://github.com/coonsta/cache-polyfill/blob/master/dist/serviceworker-cache-polyfill.js
 // Adds in some functionality missing in Chrome 40.
 
+/*
 if (!Cache.prototype.add) {
   Cache.prototype.add = function add(request) {
     return this.addAll([request]);
@@ -84,10 +85,10 @@ if (!CacheStorage.prototype.match) {
     });
   };
 }
+*/
 
 
-
-
+importScripts('serviceworker-cache-polyfill.js');
 
 
 this.addEventListener('install', function(event) {
