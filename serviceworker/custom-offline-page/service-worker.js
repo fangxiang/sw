@@ -21,6 +21,7 @@ self.addEventListener('install', function(event) {
   event.waitUntil(
     fetch(offlineRequest).then(function(response) {
       return caches.open(OFFLINE_CACHE).then(function(cache) {
+	     console.log('Offline cached', offlineRequest.url); 
         return cache.put(offlineRequest, response);
       });
     })
