@@ -110,17 +110,19 @@ this.addEventListener('install', function(event) {
 });
 
 this.addEventListener('fetch', function(event) {
-  var response;
   
-  response = caches.match(event.request).then(function(resp) {
-       
-     return resp;	   
+  
+  caches.match(event.request).then(function(resp) {
+     
+	 event.respondWith(resp);
   
   }).catch(function() {
   
     console.log("Nat mactch event.request:" + event.request.url + " 1");
   
     return fetch(event.request).then(function(resp) {
+	
+	    event.respondWith(resp);
 	
 	}).catch(function() {
      
@@ -130,7 +132,7 @@ this.addEventListener('fetch', function(event) {
 	
   });
   
-  event.respondWith(response);
+  
    
    /*
   event.respondWith(caches.match(event.request).catch(function() {
