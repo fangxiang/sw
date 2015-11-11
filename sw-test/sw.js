@@ -109,12 +109,12 @@ this.addEventListener('install', function(event) {
   );
 });
 
+
 this.addEventListener('fetch', function(event) {
   
-  
-  caches.match(event.request).then(function(resp) {
+    event.respondWith(caches.match(event.request).then(function(resp) {
      
-	 event.respondWith(resp);
+	 return resp;
   
   }).catch(function() {
   
@@ -122,41 +122,16 @@ this.addEventListener('fetch', function(event) {
   
     return fetch(event.request).then(function(resp) {
 	
-	    event.respondWith(resp);
+	    return resp;
 	
 	}).catch(function() {
      
 	    console.log("fetch error");
         return caches.match('/sw-test/gallery/myLittleVader.jpg');
-    };
-	
-  });
-  
-  
-   
-   /*
-  event.respondWith(caches.match(event.request).catch(function() {
-  
-    console.log("Nat mactch event.request:" + event.request.url + " 1");
-  
-    return fetch(event.request);
-	
-  }).then(function(r) {
-     
-	console.log("event.request:" + event.request.url + " 1");
-	 
-    response = r;
-    
-	caches.open('v1').then(function(cache) {
-      cache.put(event.request, response);
     });
 	
-    return response.clone();
-	
-  }).catch(function() {
-     
-	console.log("fetch error");
-    return caches.match('/sw-test/gallery/myLittleVader.jpg');
   }));
-  */
+    
+  
 });
+
