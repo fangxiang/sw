@@ -90,21 +90,20 @@ if (!CacheStorage.prototype.match) {
 
 importScripts('serviceworker-cache-polyfill.js');
 
-
 this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/sw/sw-test/',
-        '/sw/sw-test/index.html',
-        '/sw/sw-test/style.css',
-        '/sw/sw-test/app.js',
-        '/sw/sw-test/image-list.js',
-        '/sw/sw-test/star-wars-logo.jpg',
-        '/sw/sw-test/gallery/',
-        '/sw/sw-test/gallery/bountyHunters.jpg',
-        '/sw/sw-test/gallery/myLittleVader.jpg',
-        '/sw/sw-test/gallery/snowTroopers.jpg'
+        '/sw-test/',
+        '/sw-test/index.html',
+        '/sw-test/style.css',
+        '/sw-test/app.js',
+        '/sw-test/image-list.js',
+        '/sw-test/star-wars-logo.jpg',
+        '/sw-test/gallery/',
+        '/sw-test/gallery/bountyHunters.jpg',
+        '/sw-test/gallery/myLittleVader.jpg',
+        '/sw-test/gallery/snowTroopers.jpg'
       ]);
     })
   );
@@ -112,15 +111,27 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
   var response;
-  var cachedResponse = caches.match(event.request).catch(function() {
+  event.respondWith(caches.match(event.request).catch(function() {
+  
+    console.log("Nat mactch event.request:" + event.request.url + " 1");
+  
     return fetch(event.request);
+	
   }).then(function(r) {
+     
+	console.log("event.request:" + event.request.url + " 1");
+	 
     response = r;
-    caches.open('v1').then(function(cache) {
+    
+	caches.open('v1').then(function(cache) {
       cache.put(event.request, response);
-    });  
+    });
+	
     return response.clone();
+	
   }).catch(function() {
-    return caches.match('/sw/sw-test/gallery/myLittleVader.jpg');
-  });
+     
+	console.log("fetch error");
+    return caches.match('/sw-test/gallery/myLittleVader.jpg');
+  }));
 });
