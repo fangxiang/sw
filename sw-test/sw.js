@@ -111,6 +111,28 @@ this.addEventListener('install', function(event) {
 
 this.addEventListener('fetch', function(event) {
   var response;
+  
+  response = caches.match(event.request).then(function(resp) {
+       
+     return resp;	   
+  
+  }).catch(function() {
+  
+    console.log("Nat mactch event.request:" + event.request.url + " 1");
+  
+    return fetch(event.request).then(function(resp) {
+	
+	}).catch(function() {
+     
+	    console.log("fetch error");
+        return caches.match('/sw-test/gallery/myLittleVader.jpg');
+    };
+	
+  });
+  
+  event.respondWith(response);
+   
+   /*
   event.respondWith(caches.match(event.request).catch(function() {
   
     console.log("Nat mactch event.request:" + event.request.url + " 1");
@@ -134,4 +156,5 @@ this.addEventListener('fetch', function(event) {
 	console.log("fetch error");
     return caches.match('/sw-test/gallery/myLittleVader.jpg');
   }));
+  */
 });
