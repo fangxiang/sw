@@ -94,16 +94,16 @@ this.addEventListener('install', function(event) {
   event.waitUntil(
     caches.open('v1').then(function(cache) {
       return cache.addAll([
-        '/sw-test/',
-        '/sw-test/index.html',
-        '/sw-test/style.css',
-        '/sw-test/app.js',
-        '/sw-test/image-list.js',
-        '/sw-test/star-wars-logo.jpg',
-        '/sw-test/gallery/',
-        '/sw-test/gallery/bountyHunters.jpg',
-        '/sw-test/gallery/myLittleVader.jpg',
-        '/sw-test/gallery/snowTroopers.jpg'
+        '/sw/sw-test/',
+        '/sw/sw-test/index.html',
+        '/sw/sw-test/style.css',
+        '/sw/sw-test/app.js',
+        '/sw/sw-test/image-list.js',
+        '/sw/sw-test/star-wars-logo.jpg',
+        '/sw/sw-test/gallery/',
+        '/sw/sw-test/gallery/bountyHunters.jpg',
+        '/sw/sw-test/gallery/myLittleVader.jpg',
+        '/sw/sw-test/gallery/snowTroopers.jpg'
       ]);
     })
   );
