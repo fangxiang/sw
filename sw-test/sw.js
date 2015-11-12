@@ -113,12 +113,14 @@ this.addEventListener('install', function(event) {
 this.addEventListener('fetch', function(event) {
   
     event.respondWith(caches.match(event.request).then(function(resp) {
-     
+    
+    console.log("mactch event.request:" + event.request.url);
+	
 	 return resp;
   
   }).catch(function() {
   
-    console.log("Nat mactch event.request:" + event.request.url + " 1");
+    console.log("Not mactch event.request:" + event.request.url + " 1");
   
     return fetch(event.request).then(function(resp) {
 	
