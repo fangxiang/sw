@@ -74,7 +74,13 @@ if (!CacheStorage.prototype.match) {
       return cacheNames.reduce(function(chain, cacheName) {
         return chain.then(function() {
           return match || caches.open(cacheName).then(function(cache) {
-            return cache.match(request, opts);
+		     
+			 if(opts) {
+			    return cache.match(request, opts);
+			 } else {
+			    return cache.match(request);
+			 }
+            
           }).then(function(response) {
             match = response;
             return match;
