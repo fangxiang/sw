@@ -50,10 +50,14 @@ if ('serviceWorker' in navigator) {
 }
 
 function unregister() {
+
+if(registration) {
   registration.unregister()
     .then(function() {
       console.log('unregistered');
     });
+}
+
 }
 </script>
 <button onclick="register()">Register</button>
