@@ -20,8 +20,10 @@ var registration;
 
 function register() {
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('./service-worker.js')
+console.log("window.navigator:" + window.navigator);
+
+if ('serviceWorker' in window.navigator) {
+  window.navigator.serviceWorker.register('./service-worker.js')
     .then(function(r) {
       console.log('registered: ');
       registration = r;
