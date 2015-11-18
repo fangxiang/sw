@@ -93,6 +93,9 @@ limitations under the License.
 
     <script>
       function showFilesList() {
+	  
+	    console.log("showFilesList");
+		 
         document.querySelector('#files').style.display = 'block';
       }
 
@@ -101,10 +104,15 @@ limitations under the License.
       function waitUntilInstalled(registration) {
         return new Promise(function(resolve, reject) {
           if (registration.installing) {
+		  
+		    console.log("installing");
+			
             // If the current registration represents the "installing" service worker, then wait
             // until the installation step (during which the resources are pre-fetched) completes
             // to display the file list.
             registration.installing.addEventListener('statechange', function(e) {
+			
+			  console.log("statechange:" + e.target.state );
               if (e.target.state == 'installed') {
                 resolve();
               } else if(e.target.state == 'redundant') {
@@ -112,6 +120,9 @@ limitations under the License.
               }
             });
           } else {
+		  
+		    console.log("installed");
+		  
             // Otherwise, if this isn't the "installing" service worker, then installation must have been
             // completed during a previous visit to this page, and the resources are already pre-fetched.
             // So we can show the list of files right away.
@@ -138,16 +149,6 @@ limitations under the License.
       }
     </script>
 
-    <script>
-      /* jshint ignore:start */
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-      ga('create', 'UA-53563471-1', 'auto');
-      ga('send', 'pageview');
-      /* jshint ignore:end */
-    </script>
-    <!-- Built with love using Web Starter Kit -->
+ 
   </body>
 </html>

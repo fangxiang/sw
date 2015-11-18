@@ -36,6 +36,8 @@ var CURRENT_CACHES = {
 self.addEventListener('install', function(event) {
   var now = Date.now();
 
+  console.log("sw install");
+  
   var urlsToPrefetch = [
     'static/pre_fetched.txt',
     'static/pre_fetched.html',
@@ -71,7 +73,13 @@ self.addEventListener('install', function(event) {
         // (https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#cross-origin-resources)
         // and it is not possible to determine whether an opaque response represents a success or failure
         // (https://github.com/whatwg/fetch/issues/14).
+		
+		console.log("fetch url:" + url);
+		
         return fetch(new Request(url, {mode: 'no-cors'})).then(function(response) {
+		
+		  console.log("fetch response:" + response.status);  
+		
           if (response.status >= 400) {
             throw new Error('request for ' + urlToPrefetch +
               ' failed with status ' + response.statusText);
@@ -94,6 +102,9 @@ self.addEventListener('install', function(event) {
 });
 
 self.addEventListener('activate', function(event) {
+
+  console.log("sw activate");  
+
   // Delete all caches that aren't named in CURRENT_CACHES.
   // While there is only one cache in this example, the same logic will handle the case where
   // there are multiple versioned caches.
@@ -118,7 +129,7 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('fetch', function(event) {
   console.log('Handling fetch event for', event.request.url);
-
+	
   event.respondWith(
     // caches.match() will look for a cache entry in all of the caches available to the service worker.
     // It's an alternative to first opening a specific named cache and then matching on that.
