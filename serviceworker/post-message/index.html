@@ -59,6 +59,7 @@ limitations under the License.
 	    var messageChannel = new MessageChannel();
         messageChannel.port1.onmessage = function(event) {
             console.log("receive message:" + event.data);
+			alert("receive msg:" + event.data);
 		}
 	
 	
