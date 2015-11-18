@@ -16,14 +16,23 @@ limitations under the License.
 -->
 <script>
 
+if ('serviceWorker' in navigator) {
+  console.log("SW:" + navigator.serviceWorker)
+} else {
+  console.log("the browser is not support service-worker");
+}
+
 var registration;
+
 
 function register() {
 
-console.log("window.navigator:" + window.navigator);
-console.log("window.navigator.serviceWorker:" + window.navigator.serviceWorker);
-if ('serviceWorker' in window.navigator) {
-  window.navigator.serviceWorker.register('./service-worker.js')
+console.log("navigator:" + navigator);
+console.log("navigator.serviceWorker:" + navigator.serviceWorker);
+
+if ('serviceWorker' in navigator) {
+
+  navigator.serviceWorker.register('./service-worker.js', {scope: 'hello/'})
     .then(function(r) {
       console.log('registered: ');
       registration = r;
