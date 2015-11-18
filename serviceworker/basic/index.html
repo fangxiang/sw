@@ -19,6 +19,8 @@ limitations under the License.
 var registration;
 
 function register() {
+
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('./service-worker.js')
     .then(function(r) {
       console.log('registered: ');
@@ -29,6 +31,11 @@ function register() {
       console.error('uh oh... ');
       console.error(whut);
     });
+} else {
+
+    console.log("Browser is not support service-worker");
+}
+
 }
 
 function unregister() {

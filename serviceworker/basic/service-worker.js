@@ -1,4 +1,7 @@
-self.onfetch = function(event) {
+
+self.addEventListener('fetch', function(event) {
+
+//self.onfetch = function(event) {
   console.log('got a request');
 
   var salutation = 'Hello, ';
@@ -9,4 +12,4 @@ self.onfetch = function(event) {
   var body = new Blob([salutation, whom, energyLevel, version]);
 
   event.respondWith(new Response(body));
-};
+});
