@@ -25,7 +25,7 @@ if (typeof self.skipWaiting === 'function') {
 } else {
   console.log('self.skipWaiting() is not supported.');
 }
-
+        
 if (self.clients && (typeof self.clients.claim === 'function')) {
   console.log('self.clients.claim() is supported.');
   self.addEventListener('activate', function(e) {

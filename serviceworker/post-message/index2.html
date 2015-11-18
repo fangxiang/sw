@@ -1,0 +1,86 @@
+<!doctype html>
+<!--
+Copyright 2014 Google Inc. All Rights Reserved.
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+  http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="Sample of read-through caching and offline analytics with service workers.">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Service Worker Sample: Read-through Caching (w/Offline Analytics)</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+   
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-title" content="Service Worker Sample: Read-through Caching (w/Offline Analytics)">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+   
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+   
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    </script>
+
+   
+  </head>
+
+  <body>
+    <h1>Service Worker Sample: Post message</h1>
+
+    <p>Available in <a href="http://www.chromestatus.com/feature/6561526227927040">Chrome 40+</a></p>
+
+	<div>
+    
+	   <button id="sendmsg">SendMsg</button>
+    </div>	
+
+    <script>
+	
+	
+	document.querySelector('#sendmsg').addEventListener('click', function() {
+	
+	    navigator.serviceWorker.controller.postMessage({
+              command: 'add',
+              msg: 'hello sw'
+		});
+       
+    });
+  
+ 
+  
+     
+
+      if ('serviceWorker' in navigator) {
+	  
+	    navigator.serviceWorker.addEventListener('message', function(event) {
+           console.log("receive message" + event.data);
+        });
+  
+        navigator.serviceWorker.register('./service-worker2.js', {scope: './'}).then(function() {
+          // Registration was successful. Now, check to see whether the service worker is controlling the page.
+          if (navigator.serviceWorker.controller) {
+            console.log("OK");
+          } 
+        }).catch(function(error) {
+		    console.log(error);
+        });
+      } 
+    </script>
+  </body>
+</html>
