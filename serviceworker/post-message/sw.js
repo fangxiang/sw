@@ -77,12 +77,13 @@ self.addEventListener('activate', function(event) {
 
 self.addEventListener('message', function(event) {
   console.log('Handling message event:', event.data);
-  
+
+
    event.ports[0].postMessage({
             msg:'received'
           });
-		  
-  /*
+
+    /*
   self.clients.matchAll().then(function(clients) {
   clients.forEach(function(client) {
     console.log(client);
@@ -91,4 +92,4 @@ self.addEventListener('message', function(event) {
   */
 });
 
-});
+
