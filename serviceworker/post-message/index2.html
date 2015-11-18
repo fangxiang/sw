@@ -55,10 +55,17 @@ limitations under the License.
 	
 	document.querySelector('#sendmsg').addEventListener('click', function() {
 	
+	
+	    var messageChannel = new MessageChannel();
+        messageChannel.port1.onmessage = function(event) {
+            console.log("receive message:" + event.data);
+		}
+	
+	
 	    navigator.serviceWorker.controller.postMessage({
               command: 'add',
               msg: 'hello sw'
-		});
+		}, [messageChannel.port2]);
        
     });
   
