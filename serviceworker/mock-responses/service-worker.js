@@ -23,6 +23,9 @@ self.addEventListener('fetch', function(event) {
   if (requestUrl.pathname == '/urlshortener/v1/url' && event.request.headers.has('X-Mock-Response')) {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
+	
+	console.log('Create a mock response');
+	
     var responseBody = {
       kind: 'urlshortener#url',
       id: 'http://goo.gl/IKyjuU',
@@ -41,6 +44,8 @@ self.addEventListener('fetch', function(event) {
       }
     };
 
+	console.log('Create a mock response2');
+	
     var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
 
     console.log(' Responding with a mock response body:' + responseBody);
