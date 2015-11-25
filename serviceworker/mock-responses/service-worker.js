@@ -25,6 +25,10 @@ self.addEventListener('fetch', function(event) {
   
   try {
   
+  console.log("requestUrl path:" + requestUrl.pathname);
+
+  console.log("request headers:" + event.request.headers);
+  
   if (requestUrl.pathname == '/urlshortener/v1/url' && event.request.headers.has('X-Mock-Response')) {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
@@ -65,7 +69,7 @@ self.addEventListener('fetch', function(event) {
       console.log("Error:" + err);
   }
 
-  
+  console.log("End");
   // If event.respondWith() isn't called because this wasn't a request that we want to mock,
   // then the default request/response behavior will automatically be used.
 });
