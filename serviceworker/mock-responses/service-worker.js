@@ -12,7 +12,7 @@
 */
 
 self.addEventListener('fetch', function(event) {
-  console.log('Handling fetch event for', event.request.url);
+  console.log('Handling fetch event for:' + event.request.url);
   var requestUrl = new URL(event.request.url);
 
   // Determine whether this is a URL Shortener API request that should be mocked.
@@ -43,7 +43,7 @@ self.addEventListener('fetch', function(event) {
 
     var mockResponse = new Response(JSON.stringify(responseBody), responseInit);
 
-    console.log(' Responding with a mock response body:', responseBody);
+    console.log(' Responding with a mock response body:' + responseBody);
     event.respondWith(mockResponse);
   }
 
