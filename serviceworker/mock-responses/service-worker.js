@@ -27,9 +27,9 @@ self.addEventListener('fetch', function(event) {
   
   console.log("requestUrl path:" + requestUrl.pathname);
 
-  if(event && event.request) {
-     console.log("request headers:" + event.request.headers);
-  }
+  //if(event && event.request) {
+  //   console.log("request headers:" + event.request.headers);
+  //}
   
   if (requestUrl.pathname == '/urlshortener/v1/url' && event.request.headers.has('X-Mock-Response')) {
     // This matches the result format documented at
