@@ -22,6 +22,9 @@ self.addEventListener('fetch', function(event) {
   // might host the same RESTful API (imagine this being used to mock responses against what might be
   // a test, or QA, or production environment).
   // Also check for the existence of the 'X-Mock-Response' header.
+  
+  try {
+  
   if (requestUrl.pathname == '/urlshortener/v1/url' && event.request.headers.has('X-Mock-Response')) {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
@@ -54,6 +57,12 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(mockResponse);
   } else {
       console.log('not create a mock response');
+  }
+  
+  }
+  catch(err)
+  {
+      console.log("Error:" + err);
   }
 
   
