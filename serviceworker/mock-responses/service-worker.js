@@ -31,6 +31,10 @@ self.addEventListener('fetch', function(event) {
   //   console.log("request headers:" + event.request.headers);
   //}
   
+  console.log("event:" + event);
+  console.log("event request:" + event.request);
+  console.log("event request.headers:" + event.request.headers);
+  
   if (requestUrl.pathname == '/urlshortener/v1/url' && event.request.headers.has('X-Mock-Response')) {
     // This matches the result format documented at
     // https://developers.google.com/url-shortener/v1/getting_started#shorten
