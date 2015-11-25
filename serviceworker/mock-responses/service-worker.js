@@ -27,7 +27,7 @@ self.addEventListener('fetch', function(event) {
   
   console.log("requestUrl path:" + requestUrl.pathname);
 
-  if(event.request) {
+  if(event && event.request) {
      console.log("request headers:" + event.request.headers);
   }
   
