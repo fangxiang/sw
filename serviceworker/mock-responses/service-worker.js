@@ -15,6 +15,8 @@ self.addEventListener('fetch', function(event) {
   console.log('Handling fetch event for:' + event.request.url);
   var requestUrl = new URL(event.request.url);
 
+  console.log('Create a mock response:' + requestUrl);
+  
   // Determine whether this is a URL Shortener API request that should be mocked.
   // Matching on just the pathname gives some flexibility in case there are multiple domains that
   // might host the same RESTful API (imagine this being used to mock responses against what might be
@@ -50,8 +52,11 @@ self.addEventListener('fetch', function(event) {
 
     console.log(' Responding with a mock response body:' + responseBody);
     event.respondWith(mockResponse);
+  } else {
+      console.log('not create a mock response');
   }
 
+  
   // If event.respondWith() isn't called because this wasn't a request that we want to mock,
   // then the default request/response behavior will automatically be used.
 });
