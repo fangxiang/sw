@@ -33,7 +33,7 @@ var CURRENT_CACHES = {
 // the service worker to each client (i.e. controlled page).
 // Here, we send a message when the service worker starts up, prior to when it's ready to start
 // handling events.
-self.clients.matchAll().then(function(clients) {
+/*self.clients.matchAll().then(function(clients) {
   clients.forEach(function(client) {
     console.log(client);
     client.postMessage('The service worker just started up.');
@@ -73,7 +73,7 @@ self.addEventListener('activate', function(event) {
       });
     })
   );
-});
+});*/
 
 self.addEventListener('message', function(event) {
   console.log('Handling message event:', event.data);
