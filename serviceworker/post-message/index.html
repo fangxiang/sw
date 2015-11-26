@@ -80,7 +80,7 @@ limitations under the License.
       //     console.log("receive message" + event.data);
       //  });
   
-        navigator.serviceWorker.register('./sw.js').then(function() {
+        navigator.serviceWorker.register('./sw.js', {scope: './'}).then(function() {
           // Registration was successful. Now, check to see whether the service worker is controlling the page.
           if (navigator.serviceWorker.controller) {
             console.log("OK");
