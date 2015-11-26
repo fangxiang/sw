@@ -82,11 +82,12 @@ limitations under the License.
   
         navigator.serviceWorker.register('./sw.js', {scope: './'}).then(function(reg) {
           // Registration was successful. Now, check to see whether the service worker is controlling the page.
+          console.log("registered");
           if (navigator.serviceWorker.controller) {
             console.log("OK");
           } 
         }).catch(function(error) {
-		    console.log(error);
+		    console.log("register catch "+error);
         });
       } 
     </script>
