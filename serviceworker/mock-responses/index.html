@@ -114,6 +114,9 @@ limitations under the License.
         }
 
         xhr.addEventListener('load', function() {
+		
+		   console.log('on load');
+		
           var response = JSON.parse(xhr.response);
           console.log('Response is', response);
 
