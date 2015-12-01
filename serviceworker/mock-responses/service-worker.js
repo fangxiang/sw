@@ -52,10 +52,10 @@ self.addEventListener('fetch', function(event) {
       status: 200,
       statusText: 'OK',
       headers: {
-        'Content-Type': 'application/json',
+        Content-Type: 'application/json',
         // Purely optional, but we return a custom response header indicating that this is a
         // mock response. The controlled page could check for this header if it wanted to.
-        'X-Mock-Response': 'yes'
+        X-Mock-Response: 'yes'
       }
     };
 
