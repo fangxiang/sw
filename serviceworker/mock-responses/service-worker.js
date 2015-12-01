@@ -66,6 +66,14 @@ self.addEventListener('fetch', function(event) {
     console.log(' Responding with a mock response body:' + responseBody);
     event.respondWith(mockResponse);
   } else {
+  	var responseBody = {
+      kind: 'urlshortener#url',
+      id: 'http://goo.gl/IKyjuU',
+      longUrl: 'https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html'
+    };
+  	var response = new Response(JSON.stringify(responseBody));
+
+    event.respondWith(response);
       console.log('not create a mock response');
   }
   
