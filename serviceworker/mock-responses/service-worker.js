@@ -11,7 +11,7 @@
  limitations under the License.
 */
 
-/*self.addEventListener('fetch', function(event) {
+self.addEventListener('fetch', function(event) {
   console.log('Handling fetch event for:' + event.request.url);
   var requestUrl = new URL(event.request.url);
 
@@ -61,7 +61,7 @@
 
 	console.log('Create a mock response2');
 	
-    var mockResponse = new Response(JSON.stringify(responseBody));
+    var mockResponse = new Response(JSON.stringify(responseBody),responseInit);
 
     console.log(' Responding with a mock response body:' + responseBody);
     event.respondWith(mockResponse);
@@ -79,4 +79,3 @@
   // If event.respondWith() isn't called because this wasn't a request that we want to mock,
   // then the default request/response behavior will automatically be used.
 });
-*/

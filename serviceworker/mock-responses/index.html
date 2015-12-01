@@ -105,8 +105,7 @@ limitations under the License.
       function makeApiRequest() {
         var xhr = new XMLHttpRequest();
         // See https://developers.google.com/url-shortener/v1/getting_started#shorten
-        //xhr.open('POST', 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyCr0XVB-Hz1ohPpjvLatdj4qZ5zcSohHsU');
-        xhr.open('GET', 'http://3g.qq.com');
+        xhr.open('POST', 'https://www.googleapis.com/urlshortener/v1/url?key=AIzaSyCr0XVB-Hz1ohPpjvLatdj4qZ5zcSohHsU');
         xhr.setRequestHeader('Content-Type', 'application/json');
         // Only set the custom 'X-Mock-Response' header if the box is checked. The service worker will
         // use the header's presence to determine whether to return a mock or genuine response.
