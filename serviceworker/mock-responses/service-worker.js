@@ -11,7 +11,7 @@
  limitations under the License.
 */
 
-self.addEventListener('fetch', function(event) {
+/*self.addEventListener('fetch', function(event) {
   console.log('Handling fetch event for:' + event.request.url);
   var requestUrl = new URL(event.request.url);
 
@@ -79,3 +79,4 @@ self.addEventListener('fetch', function(event) {
   // If event.respondWith() isn't called because this wasn't a request that we want to mock,
   // then the default request/response behavior will automatically be used.
 });
+*/
