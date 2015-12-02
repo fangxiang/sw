@@ -17,14 +17,23 @@ const OFFLINE_CACHE = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', function(event) {
+
+  console.log('serviceworker install'); 
+  
   const offlineRequest = new Request(OFFLINE_URL);
+  
   event.waitUntil(
+     
+	console.log('begin fetch offline url:' + offlineRequest.url); 
+	 
     fetch(offlineRequest).then(function(response) {
       return caches.open(OFFLINE_CACHE).then(function(cache) {
 	     console.log('Offline cached', offlineRequest.url); 
-        return cache.put(offlineRequest, response);
+         return cache.put(offlineRequest, response);
       });
-    })
+    }).catch(function(e) {
+	   console.error('Fetch offline failed:' + e);
+	});
   );
 });
 
@@ -44,7 +53,7 @@ self.addEventListener('fetch', function(event) {
         // Normally, fetch() will consult the browser's HTTP caches before attempting a
         // network request, so in order to trigger offline failure for this sample, we had to
         // use a cache-busting URL parameter to avoid the cache.
-        console.error('Fetch failed; returning offline page instead.', e);
+        console.error('Fetch failed; returning offline page instead.' + e);
         return caches.open(OFFLINE_CACHE).then(function(cache) {
           return cache.match(OFFLINE_URL);
         });
