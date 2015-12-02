@@ -19,6 +19,8 @@ const OFFLINE_URL = 'offline.html';
 self.addEventListener('install', function(event) {
   
   console.log('serviceworker install'); 
+  
+  /*
   const offlineRequest = new Request(OFFLINE_URL);
   event.waitUntil(
     fetch(offlineRequest).then(function(response) {
@@ -28,6 +30,7 @@ self.addEventListener('install', function(event) {
       });
     })
   );  
+  */
 });
 
 /*
