@@ -60,7 +60,7 @@ self.addEventListener('fetch', function(event) {
     };
 
 	console.log('Create a mock response2');
-	
+	var test = JSON.stringify(responseBody);
     //var mockResponse = new Response(JSON.stringify(responseBody),responseInit);
 
     console.log(' Responding with a mock response body:' + responseBody);
