@@ -23,9 +23,8 @@ self.addEventListener('activate', function(e) {
 self.addEventListener('install', function(event) {
   
   console.log('serviceworker install'); 
-  
-  
-  const offlineRequest = new Request(OFFLINE_URL);
+    
+  var offlineRequest = new Request(OFFLINE_URL);
   event.waitUntil(
     fetch(offlineRequest).then(function(response) {
       return caches.open(OFFLINE_CACHE).then(function(cache) {
