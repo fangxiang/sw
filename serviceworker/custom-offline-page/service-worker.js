@@ -29,7 +29,7 @@ self.addEventListener('install', function(event) {
 	     console.log('Offline cached', offlineRequest.url); 
          return cache.put(offlineRequest, response);
       });
-    });
+    })
   );
 });
 
