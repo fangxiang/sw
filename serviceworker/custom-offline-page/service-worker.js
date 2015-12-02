@@ -17,20 +17,17 @@ const OFFLINE_CACHE = 'offline';
 const OFFLINE_URL = 'offline.html';
 
 self.addEventListener('install', function(event) {
-
+  
   console.log('serviceworker install'); 
-  
   const offlineRequest = new Request(OFFLINE_URL);
-  
   event.waitUntil(
-     
     fetch(offlineRequest).then(function(response) {
       return caches.open(OFFLINE_CACHE).then(function(cache) {
-	     console.log('Offline cached', offlineRequest.url); 
-         return cache.put(offlineRequest, response);
+	     console.log('Offline cached' + offlineRequest.url); 
+        return cache.put(offlineRequest, response);
       });
     })
-  );
+  );  
 });
 
 self.addEventListener('fetch', function(event) {
