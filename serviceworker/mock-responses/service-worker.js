@@ -64,7 +64,7 @@ self.addEventListener('fetch', function(event) {
     var mockResponse = new Response(JSON.stringify(responseBody),responseInit);
 
     console.log(' Responding with a mock response body:' + responseBody);
-    event.respondWith(mockResponse);
+    //event.respondWith(mockResponse);
   } else {
       console.log('not create a mock response');
   }
