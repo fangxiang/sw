@@ -13,8 +13,12 @@
 
 'use strict';
 
-const OFFLINE_CACHE = 'offline';
-const OFFLINE_URL = 'offline.html';
+var OFFLINE_CACHE = 'offline';
+var OFFLINE_URL = 'offline.html';
+
+self.addEventListener('activate', function(e) {
+  console.log('Activate event:' + e);
+});
 
 self.addEventListener('install', function(event) {
   
