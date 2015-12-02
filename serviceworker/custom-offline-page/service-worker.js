@@ -35,7 +35,7 @@ self.addEventListener('install', function(event) {
   );    
 });
 
-/*
+
 self.addEventListener('fetch', function(event) {
   // We only want to call event.respondWith() if this is a GET request for an HTML document.
   if (event.request.method === 'GET' &&
@@ -65,4 +65,4 @@ self.addEventListener('fetch', function(event) {
   // If no fetch handlers call event.respondWith(), the request will be handled by the browser
   // as if there were no service worker involvement.
 });
-*/
+
