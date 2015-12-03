@@ -41,15 +41,10 @@ self.addEventListener('fetch', function(event) {
 
   console.log('fetch event for ' + event.request.url);
   console.log(event.request.method+'  '+event.request.headers.get('accept'));
-  if(event.request.method === 'GET')
-  	console.log('1');
-  	
-  if(event.request.headers.get('accept').indexOf('text/html')>=0)
-  	console.log('2');
 
   // We only want to call event.respondWith() if this is a GET request for an HTML document.
   if (event.request.method === 'GET' &&
-      event.request.headers.get('accept').includes('text/html')) {
+      (event.request.headers.get('accept').includes('text/html')>=0)) {
 	  
     console.log('Handling fetch event for ' + event.request.url);
 	
