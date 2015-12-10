@@ -10,6 +10,53 @@
     <meta name="keywords" content="书城">
     <title>书城</title>
     
+    <script id="bookmonitor" language="javascript">
+        (function(w, d){
+            w.monitor_vers = 'novel_js_load_monitor_v17';
+            w.global_load_key = 'first_load_stat';
+            w.sessionStorage && w.sessionStorage.setItem(w.global_load_key, '');
+            w.global_js_path = ''; w.global_last_page = document.referrer||''; w.global_conn_type = ''; w.global_badjs_on = '0'; w.global_start_load = new Date().getTime();
+            w.global_js_url = 'http://3gimg.qq.com/bookshelf/js/'; w.global_env_info = 'real';
+            w.g_ver_bookrank = 'e4f08a34'; w.g_ver_catalog = 'ce2103ca'; w.g_ver_search = '1b703be7';
+            w.g_ver_store = '3bbc27eb'; w.g_ver_other = '130c8102'; w.g_ver_webapi = '0684c2cb';
+        
+            w.global_js_arr = [w.global_js_url + 'native/native.main.min.48ad5d24.js?v=2015120718'];
+            var domainMap = {
+                sign: "novelusercenter.bookshelf.html5.qq.com",
+                circle: "nc.html5.qq.com",
+                novel: "http://bookshelf.html5.qq.com/data".replace('http://', '')
+            };
+        
+            function getPath(path, update) {
+                var methodMap = {
+                    y: "getFullYear",
+                    M: "getMonth",
+                    d: "getDate",
+                    h: "getHours",
+                    m: "getMinutes",
+                    s: "getSeconds",
+                    t: "getTime"
+                };
+                if (methodMap[update]) {
+                    path += "&t=" + new Date()[methodMap[update]]();
+                }
+                return path;
+            }
+
+            w.global_get_url = function (domainName, path, update) {
+                return "http://" + (domainMap[domainName] || domainMap['novel']) + '/' + getPath(path, update);
+            };
+            w.global_qb_guid = '';
+            w.global_qb_build = 0;
+            w.global_gender = 1;
+            window._version = '2015120718';
+            window.enableErrDetail = 'disable' === 'enable' ? true : false;
+            try{;
+                if(/qq\.com/.test(d.domain)){d.domain='qq.com'}
+            }catch(e){}
+        })(window, document)
+    </script>
+    
 
     <link id="bookstyle" type="text/css" charset="utf-8" rel="stylesheet" href="bug_files/style.css">
 
