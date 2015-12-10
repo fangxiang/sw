@@ -19,7 +19,7 @@
         (function(w, d){
             w.monitor_vers = 'novel_js_load_monitor_v17';
             w.global_load_key = 'first_load_stat';
-            //w.sessionStorage && w.sessionStorage.setItem(w.global_load_key, '');
+            w.sessionStorage && w.sessionStorage.setItem(w.global_load_key, '');
             w.global_js_path = ''; w.global_last_page = document.referrer||''; w.global_conn_type = ''; w.global_badjs_on = '0'; w.global_start_load = new Date().getTime();
             w.global_js_url = 'http://3gimg.qq.com/bookshelf/js/'; w.global_env_info = 'real';
             w.g_ver_bookrank = 'e4f08a34'; w.g_ver_catalog = 'ce2103ca'; w.g_ver_search = '1b703be7';
