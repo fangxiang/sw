@@ -11,8 +11,12 @@
     
     <script id="bookmonitor" language="javascript">
 	
+	   console.log("begin load");
+	
         (function(w, d){
             
+			console.log("begin got sessionStorage");
+			
 			w.global_load_key = 'first_load_stat';
             var st = w.sessionStorage;
 
