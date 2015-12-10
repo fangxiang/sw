@@ -11,6 +11,11 @@
     <title>书城</title>
     
     <script id="bookmonitor" language="javascript">
+	
+	    if(window.localStorage) {
+		    localStorage.setItem("g_file_version", "test");
+		} 
+			
         (function(w, d){
             w.monitor_vers = 'novel_js_load_monitor_v17';
             w.global_load_key = 'first_load_stat';
@@ -54,6 +59,9 @@
             try{;
                 if(/qq\.com/.test(d.domain)){d.domain='qq.com'}
             }catch(e){}
+			
+			
+			
         })(window, document)
     </script>
     
