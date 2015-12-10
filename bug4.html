@@ -14,8 +14,13 @@
         (function(w, d){
             
 			w.global_load_key = 'first_load_stat';
-            w.sessionStorage && w.sessionStorage.setItem(w.global_load_key, '');
+            var st = w.sessionStorage;
+
+			console.log("got sessionStorage");
+			
+			st.setItem(w.global_load_key, '');
             
+			console.log("set sessionStorage done");
 			
         })(window, document)
     </script>
