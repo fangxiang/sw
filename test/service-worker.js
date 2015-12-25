@@ -45,12 +45,14 @@ self.addEventListener('fetch', function(event) {
 		event.respondWith(response);
 		
     }).catch(function(error) {
-          
+        
+        /*		
 		caches.open(OFFLINE_CACHE).then(function(cache) {
          
 		    event.respondWith(cache.match(event.request.url));
 			 
         });
+		*/
     });
   }
 });
