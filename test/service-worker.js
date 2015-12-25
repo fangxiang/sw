@@ -33,15 +33,13 @@ self.addEventListener('fetch', function(event) {
 
   event.respondWith(
   
-    return fetch(event.request).then(function(response) {
+    fetch(event.request).then(function(response) {
 	  
-	    /*
+	    
         console.log('Response from network is:' + response);
 		return caches.open(OFFLINE_CACHE).then(function(cache) {
 		    return cache.put(event.request.url, response);
 		});
-		*/
-		return response;
 		
 	  });
 	  
