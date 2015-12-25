@@ -58,7 +58,7 @@ self.addEventListener('fetch', function(event) {
 			    throw error;
 			}
 		});      
-    })
+    });
 	
   );
   
