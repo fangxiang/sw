@@ -44,7 +44,10 @@ self.addEventListener('fetch', function(event) {
 		
         return response;
       
-	  }).catch(function(error) {
+	  });
+	  
+	  /*
+	  .catch(function(error) {
 	  
 	    return caches.match(event.request.url).then(function(response) {
     
@@ -59,6 +62,7 @@ self.addEventListener('fetch', function(event) {
 			}
 		});      
     });
+	*/
 	
   );
   
