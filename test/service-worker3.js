@@ -32,30 +32,34 @@ self.addEventListener('fetch', function(event) {
   console.log('fetch event for ' + event.request.url);
 
   event.respondWith(
-    
-    caches.match(event.request).then(function(response) {
-    
- 	  if (response) {
-        console.log('Found response in cache:'+ response);
-        return response;
-      }
 
-      console.log('No response found in cache. About to fetch from network...');
-
-      return fetch(event.request).then(function(response) {
+  
+    return fetch(event.request).then(function(response) {
 	  
         console.log('Response from network is:' + response);
+		
+		caches.open(OFFLINE_CACHE).then(function(cache) {
+		    cache.put(event.request.url, response);
+		});
+		
         return response;
       
 	  }).catch(function(error) {
-        // This catch() will handle exceptions thrown from the fetch() operation.
-        // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
-        // It will return a normal response object that has the appropriate error code set.
-        console.error('Fetching failed:' + error);
-
-        throw error;
-      });
+	  
+	    return caches.match(event.request.url).then(function(response) {
+    
+ 	        if (response) {
+			
+               console.log('Found response in cache:'+ response);
+               return response;
+			   
+            } else {
+			
+			    throw error;
+			}
+		});      
     })
+	
   );
   
 });
