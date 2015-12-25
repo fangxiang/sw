@@ -3,6 +3,7 @@
 
 
 var OFFLINE_URL = 'images/img.jpg';
+var OFFLINE_CACHE = 'CACHE';
 
 self.addEventListener('activate', function(e) {
   console.log('Activate event:' + e);
@@ -25,7 +26,7 @@ self.addEventListener('install', function(event) {
 */
 });
 
-/*
+
 self.addEventListener('fetch', function(event) {
 
   console.log('fetch event for ' + event.request.url);
@@ -35,16 +36,22 @@ self.addEventListener('fetch', function(event) {
 	  
     console.log('Handling fetch event for ' + event.request.url);
 	
-    event.respondWith(
-      fetch(event.request).catch(function(e) {
-      
-	    console.log('Fetch failed; returning offline page instead.' + e);
-		   
-        return caches.open(OFFLINE_CACHE).then(function(cache) {
-          return cache.match(OFFLINE_URL);
+	fetch(event.request).then(function(response) {
+		
+		caches.open(OFFLINE_CACHE).then(function(cache) {
+	       cache.put(event.request.url, response);
         });
-      })
-    );
+	    
+		event.respondWith(response);
+		
+    }).catch(function(error) {
+          
+		caches.open(OFFLINE_CACHE).then(function(cache) {
+         
+		    event.respondWith(cache.match(event.request.url));
+			 
+        });
+    });
   }
 });
-*/
+
