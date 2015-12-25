@@ -38,10 +38,12 @@ self.addEventListener('fetch', function(event) {
 	
 	fetch(event.request).then(function(response) {
 		
+		/*
 		caches.open(OFFLINE_CACHE).then(function(cache) {
 	       cache.put(event.request.url, response);
         });
-	    
+	    */
+		
 		event.respondWith(response);
 		
     }).catch(function(error) {
