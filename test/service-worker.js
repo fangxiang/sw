@@ -38,12 +38,10 @@ self.addEventListener('fetch', function(event) {
 	  
         console.log('Response from network is:' + response);
 		
-		caches.open(OFFLINE_CACHE).then(function(cache) {
+		return caches.open(OFFLINE_CACHE).then(function(cache) {
 		    cache.put(event.request.url, response);
+			return response;
 		});
-		
-        return response;
-      
 	  });
 	  
 	  /*
