@@ -25,7 +25,7 @@ self.addEventListener('install', function(event) {
 */
 });
 
-
+/*
 self.addEventListener('fetch', function(event) {
 
   console.log('fetch event for ' + event.request.url);
@@ -39,7 +39,7 @@ self.addEventListener('fetch', function(event) {
       fetch(event.request).catch(function(e) {
       
 	    console.log('Fetch failed; returning offline page instead.' + e);
-		
+		   
         return caches.open(OFFLINE_CACHE).then(function(cache) {
           return cache.match(OFFLINE_URL);
         });
@@ -47,4 +47,4 @@ self.addEventListener('fetch', function(event) {
     );
   }
 });
-
+*/
