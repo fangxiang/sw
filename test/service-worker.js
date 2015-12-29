@@ -34,6 +34,13 @@ self.addEventListener('fetch', function(event) {
 
   event.respondWith(
     
+	
+	fetch(event.request).then(function(response) {
+        console.log('Response from network is:' + response);			
+        return response;
+	});
+	  
+	/*
     caches.match(event.request).then(function(response) {
     
  	  if (response) {
@@ -64,6 +71,7 @@ self.addEventListener('fetch', function(event) {
         throw error;
       });
     })
+	*/
   );
   
 });
