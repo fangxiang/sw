@@ -10,6 +10,7 @@ self.addEventListener('install', function(event) {
   console.log('serviceworker install'); 
 });
 
+/*
 self.addEventListener('fetch', function(event) {
 
   console.log('fetch event for ' + event.request.url);
@@ -23,5 +24,5 @@ self.addEventListener('fetch', function(event) {
 	
   );  
 });
-
+*/
 
