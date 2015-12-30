@@ -1,3 +1,13 @@
+'use strict';
+
+self.addEventListener('activate', function(e) {
+  console.log('Activate event:' + e);
+});
+
+self.addEventListener('install', function(event) {
+  
+  console.log('serviceworker install'); 
+});
 
 self.addEventListener('fetch', function(event) {
 
