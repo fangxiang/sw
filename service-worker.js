@@ -75,6 +75,16 @@ self.addEventListener('fetch', function(event) {
 
     console.log('Handling fetch event for:'+ event.request.url);
 
+	self.clients.getAll().then(function(clients) {
+  
+        console.log("sw clients:" + clients.length);
+  
+        clients.forEach(function(client) {
+            console.log("In fetch postMessage:" + client);
+           client.postMessage('Begin fetch');
+        });
+    });
+  
     event.respondWith(
 
         caches.open(CURRENT_CACHES).then(function(cache) {
