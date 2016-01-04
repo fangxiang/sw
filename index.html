@@ -24,9 +24,9 @@
 
       if ('serviceWorker' in navigator) {
 	    
-		navigator.serviceWorker.addEventListener('message', function(event) {
+		navigator.serviceWorker.onmessage = function(event) {
            alert('message:' + event);
-        });
+        };
 		
 		console.log("start register");
         navigator.serviceWorker.register('service-worker.js', {scope: '/sw/', host:'fangxiang.github.io'}).then(function(r) {
