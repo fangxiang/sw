@@ -77,7 +77,7 @@ self.addEventListener('fetch', function(event) {
 
 	self.clients.getAll().then(function(clients) {
   
-        console.log("sw clients:" + clients.length);
+        console.log("In fetch sw clients:" + clients.length);
   
         clients.forEach(function(client) {
             console.log("In fetch postMessage:" + client);
