@@ -20,7 +20,10 @@ self.addEventListener('install', function(event) {
     'images/img.jpg', 'index.html'
   ];
   
-  self.clients.getAll().then(function(clients) {
+  self.clients.matchAll().then(function(clients) {
+  
+     console.log("sw clients:" + clients.length);
+  
      clients.forEach(function(client) {
         console.log("postMessage:" + client);
         client.postMessage('The service worker updated.');
