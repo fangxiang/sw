@@ -7,7 +7,21 @@ var CURRENT_CACHES = "CURRENT_CACHES";
 
 
 self.addEventListener('activate', function(e) {
+
+
   console.log('Activate event:' + e);
+  
+  
+  self.clients.getAll().then(function(clients) {
+  
+        console.log("In activate sw clients:" + clients.length);
+  
+        clients.forEach(function(client) {
+            console.log("In activate postMessage:" + client);
+            client.postMessage('Begin fetch');
+        });
+  });
+	
 });
 
 
@@ -75,15 +89,6 @@ self.addEventListener('fetch', function(event) {
 
     console.log('aaaHandling fetch event for:'+ event.request.url);
 
-	self.clients.getAll().then(function(clients) {
-  
-        console.log("In fetch sw clients:" + clients.length);
-  
-        clients.forEach(function(client) {
-            console.log("In fetch postMessage:" + client);
-           client.postMessage('Begin fetch');
-        });
-    });
   
     event.respondWith(
 
