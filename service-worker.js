@@ -22,6 +22,12 @@ self.addEventListener('install', function(event) {
 
   console.log('Handling install event Resources to pre-fetch:'+ urlsToPrefetch);
 
+  self.clients.matchAll().then(function(clients) {
+     clients.forEach(function(client) {
+        console.log("postMessage:" + client);
+        client.postMessage('The service worker updated.');
+     });
+  });
 
   event.waitUntil(
 
