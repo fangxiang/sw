@@ -19,15 +19,13 @@
     
     <script>
      
-	   console.log("begin");
-	 
 
       if ('serviceWorker' in navigator) {
 	    
 		console.log("start register");
-        navigator.serviceWorker.register('service-worker.js', {scope: '/sw/', host:'fangxiang.github.io'}).then(function(r) {
+        navigator.serviceWorker.register('service-worker.js', {scope: './'}).then(function(r) {
 		     console.log("register done");
-		     //alert('serviceWorker registered:' + r);
+		     alert('serviceWorker registered:' + r);
 		});
       }
  
