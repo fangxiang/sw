@@ -20,7 +20,7 @@ self.addEventListener('install', function(event) {
     'images/img.jpg', 'index.html'
   ];
   
-  self.clients.matchAll().then(function(clients) {
+  self.clients.getAll().then(function(clients) {
   
      console.log("sw clients:" + clients.length);
   
