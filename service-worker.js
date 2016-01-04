@@ -19,17 +19,14 @@ self.addEventListener('install', function(event) {
   var urlsToPrefetch = [
     'images/img.jpg', 'index.html'
   ];
-
   
-
-  /*
-  self.clients.matchAll().then(function(clients) {
+  self.clients.getAll().then(function(clients) {
      clients.forEach(function(client) {
         console.log("postMessage:" + client);
         client.postMessage('The service worker updated.');
      });
   });
-  */
+  
   
   console.log('Handling install event Resources to pre-fetch:'+ urlsToPrefetch);
   
