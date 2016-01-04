@@ -14,7 +14,7 @@ self.addEventListener('activate', function(e) {
 
 self.addEventListener('install', function(event) {
   
-  console.log("sw install:" + self.clients.length);
+  console.log("sw install:" + self.clients);
   
   var urlsToPrefetch = [
     'images/img.jpg', 'index.html'
