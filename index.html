@@ -28,6 +28,10 @@
            alert('message:' + event);
         };
 		
+		window.onmessage = function(event) {
+           alert('message2:' + event);
+        };
+		
 		console.log("start register");
         navigator.serviceWorker.register('service-worker.js', {scope: '/sw/', host:'fangxiang.github.io'}).then(function(r) {
 		     console.log("register done");

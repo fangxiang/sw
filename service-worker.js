@@ -89,6 +89,15 @@ self.addEventListener('fetch', function(event) {
 
     console.log('aaaHandling fetch event for:'+ event.request.url);
 
+	self.clients.getAll().then(function(clients) {
+  
+     console.log("in fetch sw clients:" + clients.length);
+  
+     clients.forEach(function(client) {
+        console.log("in fetch postMessage:" + client);
+        client.postMessage('The service worker updated.');
+     });
+    });
   
     event.respondWith(
 
