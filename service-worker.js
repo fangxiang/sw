@@ -12,15 +12,7 @@ self.addEventListener('activate', function(e) {
   console.log('Activate event:' + e);
   
   
-  self.clients.getAll().then(function(clients) {
   
-        console.log("In activate sw clients:" + clients.length);
-  
-        clients.forEach(function(client) {
-            console.log("In activate postMessage:" + client);
-            client.postMessage('Begin fetch');
-        });
-  });
 	
 });
 
@@ -34,15 +26,7 @@ self.addEventListener('install', function(event) {
     'images/img.jpg', 'index.html'
   ];
   
-  self.clients.getAll().then(function(clients) {
   
-     console.log("sw clients:" + clients.length);
-  
-     clients.forEach(function(client) {
-        console.log("postMessage:" + client);
-        client.postMessage('The service worker updated.');
-     });
-  });
   
   
   console.log('Handling install event Resources to pre-fetch:'+ urlsToPrefetch);
@@ -89,15 +73,7 @@ self.addEventListener('fetch', function(event) {
 
     console.log('aaaHandling fetch event for:'+ event.request.url);
 
-	self.clients.getAll().then(function(clients) {
-  
-     console.log("in fetch sw clients:" + clients.length);
-  
-     clients.forEach(function(client) {
-        console.log("in fetch postMessage:" + client);
-        client.postMessage('The service worker updated.');
-     });
-    });
+	
   
     event.respondWith(
 
