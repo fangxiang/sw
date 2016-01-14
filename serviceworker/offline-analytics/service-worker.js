@@ -124,6 +124,7 @@ self.addEventListener('activate', function(event) {
     return CURRENT_CACHES[key];
   });
 
+  /*
   event.waitUntil(
     // `caches` refers to the global CacheStorage object, and is defined at
     // http://slightlyoff.github.io/ServiceWorker/spec/service_worker/#self-caches
@@ -139,6 +140,8 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
+  */
+  
 });
 
 // This sample illustrates an aggressive approach to caching, in which every valid response is
