@@ -63,7 +63,7 @@ self.addEventListener('activate', function(event) {
 // Other approaches, like selectively caching based on response headers or only caching
 // responses served from a specific domain, might be more appropriate for those use cases.
 self.addEventListener('fetch', function(event) {
-  console.log('Handling fetch event for', event.request.url);
+  console.log('Handling fetch event for' + event.request.url);
 
   event.respondWith(
     caches.open(CURRENT_CACHES['read-through']).then(function(cache) {
@@ -71,7 +71,7 @@ self.addEventListener('fetch', function(event) {
         if (response) {
           // If there is an entry in the cache for event.request, then response will be defined
           // and we can just return it.
-          console.log(' Found response in cache:', response);
+          console.log(' Found response in cache:'+ response);
 
           return response;
         } else {
@@ -107,7 +107,7 @@ self.addEventListener('fetch', function(event) {
         // This catch() will handle exceptions that arise from the match() or fetch() operations.
         // Note that a HTTP error response (e.g. 404) will NOT trigger an exception.
         // It will return a normal response object that has the appropriate error code set.
-        console.error('  Read-through caching failed:', error);
+        console.error('  Read-through caching failed:' + error);
 
         throw error;
       });
