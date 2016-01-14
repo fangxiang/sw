@@ -93,7 +93,13 @@ limitations under the License.
       }
 
       if ('serviceWorker' in navigator) {
+	  
+	    console.log("register begin");
+		
         navigator.serviceWorker.register('./service-worker.js', {scope: './'}).then(function() {
+		
+		   console.log("register done");
+		   
           // Registration was successful. Now, check to see whether the service worker is controlling the page.
           if (navigator.serviceWorker.controller) {
             // If .controller is set, then this page is being actively controlled by the service worker.
