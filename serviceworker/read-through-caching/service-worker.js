@@ -40,7 +40,7 @@ self.addEventListener('activate', function(event) {
     return CURRENT_CACHES[key];
   });
 
-  /*
+  
   event.waitUntil(
     caches.keys().then(function(cacheNames) {
       return Promise.all(
@@ -54,7 +54,7 @@ self.addEventListener('activate', function(event) {
       );
     })
   );
-  */
+  
 });
 
 // This sample illustrates an aggressive approach to caching, in which every valid response is
